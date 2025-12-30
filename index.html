@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Cutie 💕</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(135deg,#ffd6e8,#fff0f6);
+  height:100vh;
+  overflow:hidden;
+}
+
+/* MOBILE ONLY */
+@media(min-width:768px){
+  body::before{
+    content:"Please open on mobile 📱";
+    position:fixed;
+    inset:0;
+    background:#ffedf3;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:1.5rem;
+    color:#ff4d6d;
+    z-index:999;
+  }
+}
+
+.page{
+  display:none;
+  height:100vh;
+  text-align:center;
+  padding:40px 20px;
+}
+.active{display:block;}
+
+h1{
+  font-family:'Pacifico',cursive;
+  font-size:2.8rem;
+  color:#ff4d6d;
+}
+
+button{
+  margin-top:30px;
+  padding:14px 30px;
+  border:none;
+  border-radius:30px;
+  background:#ff4d6d;
+  color:white;
+  font-size:1.1rem;
+  cursor:pointer;
+  box-shadow:0 10px 20px rgba(0,0,0,0.15);
+}
+
+.cards{
+  display:flex;
+  gap:20px;
+  overflow-x:auto;
+  padding:40px 10px;
+  scroll-snap-type:x mandatory;
+}
+.card{
+  min-width:180px;
+  height:110px;
+  background:white;
+  border-radius:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#ff4d6d;
+  font-size:1.1rem;
+  box-shadow:0 8px 16px rgba(0,0,0,0.12);
+  scroll-snap-align:center;
+}
+
+.cards::-webkit-scrollbar{display:none;}
+
+#giftBtn{display:none;}
+
+.final-card{
+  background:white;
+  padding:25px;
+  border-radius:25px;
+  box-shadow:0 12px 25px rgba(0,0,0,0.15);
+}
+
+.signature{
+  margin-top:15px;
+  font-family:'Pacifico',cursive;
+  color:#ff4d6d;
+  font-size:1.2rem;
+}
+
+/* HEARTS */
+.heart{
+  position:fixed;
+  bottom:-20px;
+  font-size:20px;
+  animation:float 6s linear infinite;
+}
+@keyframes float{
+  0%{transform:translateY(0);opacity:1;}
+  100%{transform:translateY(-110vh);opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<audio id="music" loop>
+  <source src="https://cdn.pixabay.com/audio/2023/02/28/audio_2a7d66e6d5.mp3" type="audio/mpeg">
+</audio>
+
+<!-- PAGE 1 -->
+<div class="page active" id="p1">
+  <h1>For my cutie 💕</h1>
+  <button onclick="next(2)">Tap me 🌸</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="p2">
+  <h1>Slide away worries 💭</h1>
+  <div class="cards" id="cards">
+    <div class="card">Stress</div>
+    <div class="card">Heartbreak</div>
+    <div class="card">Overthinking</div>
+    <div class="card">Fear</div>
+    <div class="card">Sadness</div>
+  </div>
+  <button id="giftBtn" onclick="next(3)">🎁 Open Gift</button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="p3">
+  <div class="final-card">
+    <h1>Happy New Year 💖</h1>
+    <p>
+      May this year gently protect your heart, wrap you in warmth,
+      and bring moments that make you smile without even trying.
+    </p>
+    <p>
+      Whenever the world feels heavy, remember —
+      there’s someone who believes in you endlessly
+      and chooses you every single day.
+    </p>
+    <div class="signature">
+      Hope you have a great year (with me),<br>
+      much love from my side 💝
+    </div>
+  </div>
+</div>
+
+<script>
+function next(n){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('p'+n).classList.add('active');
+  document.getElementById('music').play();
+}
+
+const cards=document.getElementById('cards');
+cards.addEventListener('scroll',()=>{
+  if(cards.scrollLeft>100){
+    document.getElementById('giftBtn').style.display='inline-block';
+  }
+});
+
+// floating hearts
+setInterval(()=>{
+  const h=document.createElement('div');
+  h.className='heart';
+  h.innerText='💗';
+  h.style.left=Math.random()*100+'vw';
+  h.style.animationDuration=4+Math.random()*3+'s';
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),7000);
+},500);
+</script>
+
+</body>
+</html>
