@@ -3,51 +3,55 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Cutie 💕</title>
+<title>For My Princess 💖</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
+*{margin:0;padding:0;box-sizing:border-box}
 body{
   font-family:'Poppins',sans-serif;
-  background:linear-gradient(135deg,#ffd6e8,#fff0f6);
+  background:linear-gradient(135deg,#ffd6e8,#fbeaff,#fff1f5);
   height:100vh;
   overflow:hidden;
 }
 
-/* MOBILE ONLY */
+/* mobile only */
 @media(min-width:768px){
   body::before{
     content:"Please open on mobile 📱";
-    position:fixed;
-    inset:0;
-    background:#ffedf3;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:1.5rem;
-    color:#ff4d6d;
-    z-index:999;
+    position:fixed;inset:0;
+    background:#fff0f6;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.5rem;color:#ff4d6d;z-index:999;
   }
 }
 
 .page{
   display:none;
   height:100vh;
+  padding:30px 20px;
   text-align:center;
-  padding:40px 20px;
 }
-.active{display:block;}
+.active{display:block}
+
+/* glass card */
+.glass{
+  background:rgba(255,255,255,0.45);
+  backdrop-filter:blur(14px);
+  border-radius:25px;
+  padding:25px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.15);
+}
 
 h1{
   font-family:'Pacifico',cursive;
-  font-size:2.8rem;
   color:#ff4d6d;
+  font-size:2.6rem;
 }
 
 button{
-  margin-top:30px;
+  margin-top:25px;
   padding:14px 30px;
   border:none;
   border-radius:30px;
@@ -55,18 +59,30 @@ button{
   color:white;
   font-size:1.1rem;
   cursor:pointer;
-  box-shadow:0 10px 20px rgba(0,0,0,0.15);
+  box-shadow:0 10px 20px rgba(0,0,0,0.2);
 }
 
+/* hearts */
+.heart{
+  position:fixed;
+  bottom:-20px;
+  font-size:22px;
+  animation:float 6s linear infinite;
+}
+@keyframes float{
+  to{transform:translateY(-120vh);opacity:0}
+}
+
+/* cards */
 .cards{
   display:flex;
   gap:20px;
   overflow-x:auto;
-  padding:40px 10px;
+  padding:30px 10px;
   scroll-snap-type:x mandatory;
 }
 .card{
-  min-width:180px;
+  min-width:170px;
   height:110px;
   background:white;
   border-radius:20px;
@@ -74,39 +90,57 @@ button{
   align-items:center;
   justify-content:center;
   color:#ff4d6d;
-  font-size:1.1rem;
-  box-shadow:0 8px 16px rgba(0,0,0,0.12);
+  font-size:1.05rem;
+  box-shadow:0 8px 16px rgba(0,0,0,0.15);
   scroll-snap-align:center;
 }
+.cards::-webkit-scrollbar{display:none}
 
-.cards::-webkit-scrollbar{display:none;}
+/* dots */
+.dots{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+}
+.dot{
+  width:10px;height:10px;
+  border-radius:50%;
+  background:#ffb3c6;
+}
+.dot.active{background:#ff4d6d}
 
-#giftBtn{display:none;}
+#giftBtn{display:none}
 
-.final-card{
-  background:white;
-  padding:25px;
-  border-radius:25px;
-  box-shadow:0 12px 25px rgba(0,0,0,0.15);
+/* typewriter */
+.type{
+  min-height:120px;
+  font-size:0.95rem;
+  color:#444;
 }
 
+/* music */
+.music{
+  position:fixed;
+  top:15px;right:15px;
+  background:white;
+  border-radius:50%;
+  width:45px;height:45px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;
+  box-shadow:0 6px 14px rgba(0,0,0,0.2);
+}
+
+/* final */
+.final img{
+  width:100%;
+  border-radius:20px;
+  margin:15px 0;
+}
 .signature{
-  margin-top:15px;
   font-family:'Pacifico',cursive;
   color:#ff4d6d;
+  margin-top:15px;
   font-size:1.2rem;
-}
-
-/* HEARTS */
-.heart{
-  position:fixed;
-  bottom:-20px;
-  font-size:20px;
-  animation:float 6s linear infinite;
-}
-@keyframes float{
-  0%{transform:translateY(0);opacity:1;}
-  100%{transform:translateY(-110vh);opacity:0;}
 }
 </style>
 </head>
@@ -114,72 +148,115 @@ button{
 <body>
 
 <audio id="music" loop>
-  <source src="https://cdn.pixabay.com/audio/2023/02/28/audio_2a7d66e6d5.mp3" type="audio/mpeg">
+  <source src="https://cdn.pixabay.com/audio/2023/04/10/audio_5b1bbf6c39.mp3" type="audio/mpeg">
 </audio>
 
+<div class="music" onclick="toggleMusic()">🎵</div>
+
 <!-- PAGE 1 -->
-<div class="page active" id="p1">
-  <h1>For my cutie 💕</h1>
-  <button onclick="next(2)">Tap me 🌸</button>
+<div class="page active">
+  <div class="glass">
+    <h1>For my princess 👑</h1>
+    <p style="margin-top:10px;color:#555">Something made just for you</p>
+    <button onclick="go(2)">Tap gently 💕</button>
+  </div>
 </div>
 
 <!-- PAGE 2 -->
-<div class="page" id="p2">
-  <h1>Slide away worries 💭</h1>
-  <div class="cards" id="cards">
-    <div class="card">Stress</div>
-    <div class="card">Heartbreak</div>
-    <div class="card">Overthinking</div>
-    <div class="card">Fear</div>
-    <div class="card">Sadness</div>
+<div class="page">
+  <div class="glass">
+    <h1>Let go of worries 💭</h1>
+    <div class="cards" id="cards">
+      <div class="card">Stress</div>
+      <div class="card">Heartbreak</div>
+      <div class="card">Overthinking</div>
+      <div class="card">Fear</div>
+    </div>
+
+    <div class="dots">
+      <div class="dot active"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+
+    <button id="giftBtn" onclick="go(3)">🎁 Your gift</button>
   </div>
-  <button id="giftBtn" onclick="next(3)">🎁 Open Gift</button>
 </div>
 
 <!-- PAGE 3 -->
-<div class="page" id="p3">
-  <div class="final-card">
-    <h1>Happy New Year 💖</h1>
-    <p>
-      May this year gently protect your heart, wrap you in warmth,
-      and bring moments that make you smile without even trying.
-    </p>
-    <p>
-      Whenever the world feels heavy, remember —
-      there’s someone who believes in you endlessly
-      and chooses you every single day.
-    </p>
-    <div class="signature">
-      Hope you have a great year (with me),<br>
-      much love from my side 💝
-    </div>
+<div class="page">
+  <div class="glass">
+    <h1>From my heart 💖</h1>
+    <div class="type" id="type"></div>
+    <button onclick="go(4)">One last thing…</button>
+  </div>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page final">
+  <div class="glass">
+    <h1>You're my favourite person 💗</h1>
+    <img src="https://i.imgur.com/8nLFCVP.jpg" alt="I love you 3000">
+    <p>I love you 3000 ❤️</p>
+    <div class="signature">— Agni</div>
   </div>
 </div>
 
 <script>
-function next(n){
+function go(n){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.getElementById('p'+n).classList.add('active');
+  document.querySelectorAll('.page')[n-1].classList.add('active');
   document.getElementById('music').play();
 }
 
-const cards=document.getElementById('cards');
-cards.addEventListener('scroll',()=>{
-  if(cards.scrollLeft>100){
-    document.getElementById('giftBtn').style.display='inline-block';
-  }
-});
-
-// floating hearts
+/* hearts */
 setInterval(()=>{
   const h=document.createElement('div');
   h.className='heart';
-  h.innerText='💗';
+  h.innerHTML=Math.random()>0.5?'💖':'💗';
   h.style.left=Math.random()*100+'vw';
   h.style.animationDuration=4+Math.random()*3+'s';
   document.body.appendChild(h);
   setTimeout(()=>h.remove(),7000);
 },500);
+
+/* progress */
+const cards=document.getElementById('cards');
+const dots=document.querySelectorAll('.dot');
+cards.addEventListener('scroll',()=>{
+  let i=Math.round(cards.scrollLeft/180);
+  dots.forEach(d=>d.classList.remove('active'));
+  if(dots[i]) dots[i].classList.add('active');
+  if(i>=3) document.getElementById('giftBtn').style.display='inline-block';
+});
+
+/* typewriter */
+const text=`My princess,
+May this year treat your heart gently,
+bring peace to your mind,
+and smiles you don’t have to force.
+
+No matter where life takes you,
+remember someone is always cheering for you,
+choosing you,
+and holding space for you — always.`;
+let idx=0;
+function type(){
+  if(idx<text.length){
+    document.getElementById('type').innerHTML+=text.charAt(idx++);
+    setTimeout(type,40);
+  }
+}
+setTimeout(type,800);
+
+/* music */
+let playing=false;
+function toggleMusic(){
+  const m=document.getElementById('music');
+  if(!playing){m.play();playing=true}
+  else{m.pause();playing=false}
+}
 </script>
 
 </body>
