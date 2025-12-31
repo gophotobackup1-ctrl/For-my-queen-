@@ -16,6 +16,7 @@ body{
   overflow:hidden;
 }
 
+/* mobile only */
 @media(min-width:768px){
   body::before{
     content:"Please open on mobile 📱";
@@ -152,11 +153,13 @@ button{
 
 <body>
 
-<!-- Spotify embed (Perfect – Ed Sheeran) -->
+<!-- Spotify music (Perfect – Ed Sheeran) -->
 <iframe style="border-radius:12px;margin:10px"
 src="https://open.spotify.com/embed/track/0tgVpDi06FyKpA1z0VMD4v"
-width="100%" height="80" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+width="100%" height="80" frameborder="0"
+allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
 
+<!-- draggable heart -->
 <div id="dragHeart">💗</div>
 
 <!-- PAGE 1 -->
@@ -202,9 +205,8 @@ width="100%" height="80" frameborder="0" allow="autoplay; clipboard-write; encry
 <!-- PAGE 4 -->
 <div class="page final">
   <div class="glass">
-    <h1>You're my favourite person 🦋</h1>
-    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=800&q=80" alt="cute couple">
-    <p><b>I love you 3000 ❤️</b></p>
+    <img src="https://cdn.pixabay.com/photo/2016/03/05/19/02/flowers-1238653_1280.jpg" alt="flowers">
+    <p><b>Love you alot 🙌</b></p>
     <div class="signature">— Agni</div>
   </div>
 </div>
@@ -215,7 +217,7 @@ function go(n){
   document.querySelectorAll('.page')[n-1].classList.add('active');
 }
 
-/* hearts */
+/* floating hearts */
 setInterval(()=>{
   const h=document.createElement('div');
   h.className='heart-float';
@@ -237,7 +239,7 @@ setInterval(()=>{
   setTimeout(()=>b.remove(),8000);
 },1500);
 
-/* progress */
+/* progress dots */
 const cards=document.getElementById('cards');
 const dots=document.querySelectorAll('.dot');
 cards.addEventListener('scroll',()=>{
@@ -247,13 +249,13 @@ cards.addEventListener('scroll',()=>{
   if(i>=3) document.getElementById('giftBtn').style.display='inline-block';
 });
 
-/* typewriter */
+/* typewriter text */
 const text=`My princess,
 You make the ordinary feel special,
 and the heavy days feel lighter.
 
 No matter where life takes us,
-you will always be my favourite place.`;
+you will always be someone I care for deeply.`;
 let idx=0;
 (function type(){
   if(idx<text.length){
